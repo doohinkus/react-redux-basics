@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setMessage, setNestMessage } from './messageDuck';
-import './App.css';
+import { setMessage, setNestMessage } from '../ducks/messageDuck';
+import '../App.css';
 
 // Component that is connected to Redux
 function Messages({ setMessage, setNestMessage, message, secret }){

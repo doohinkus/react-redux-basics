@@ -32,8 +32,7 @@ export function messageReducer(state=DEFAULT_STATE, action){
   // ...state returns a copy of the old state
   // we are not mutating state
   // we simply add a new copy with updated information
-  // this allows us to track changes easily
-  // console.log(action.type);
+  // this allows us to track changes easilywith redux logger
 
   switch (action.type){
     case(SET_MESSAGE):
@@ -52,8 +51,11 @@ export function messageReducer(state=DEFAULT_STATE, action){
       return state;
   }
 }
+
+// Move this to index when we combine reducers
+
 // Apply middleware
-// This lets us see how the store changes via console logs
+// This middleware lets us see how the store changes via console logs
 const middleware = applyMiddleware(logger);
 
 // Now we create the store, using our reducer
