@@ -66,9 +66,4 @@ export function messageReducer(state=DEFAULT_STATE, action){
 
 // Move this to index when we combine reducers
 
-// Apply middleware
-// This middleware lets us see how the store changes via console logs
-const middleware = applyMiddleware(logger);
 
-// Now we create the store, using our reducer
-export const messageStore =  createStore(messageReducer, middleware);

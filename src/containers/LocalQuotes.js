@@ -1,17 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setMessage } from '../ducks/messageDuck';
-import '../App.css';
+import { getLocalQuote } from '../ducks/messageDuck';
 
 // Component that is connected to Redux
-function Messages({ setMessage, message }){
+function LocalQuotes({ getLocalQuote, localQuote }){
   return (
     <div className="App">
       <header className="App-header">
-         <h3>Message: </h3>
-         <h2>{message}</h2>
-         <button onClick={() => setMessage("Hello!")}>Set Message</button>
-         <button onClick={() => { setMessage(""); }}>Clear Messages</button>
+        <h2>Local Quote</h2>
+        <p>{localQuote}</p>
+        <button onClick={() => getLocalQuote()}>Get Local Quote</button>
       </header>
     </div>
   );
@@ -21,7 +19,7 @@ function Messages({ setMessage, message }){
 // Then map it to the component's props eg this.props.message will equal the store's message value:
 function mapStateToProps(state) {
   return {
-    message: state.message,
+    localQuote: state.localQuote
   }
 }
 // Map the action to our component
@@ -29,7 +27,7 @@ function mapStateToProps(state) {
 // It is, however, bad practice to change the names of actions
 function mapDispatchToProps(dispatch){
   return {
-    setMessage: (message) => dispatch(setMessage(message)),
+    getLocalQuote: () => dispatch(getLocalQuote())
   }
 }
 // This is how to connect redux to the component
@@ -38,4 +36,4 @@ function mapDispatchToProps(dispatch){
 // For example: connect(null, mapDispatchToProps)(App)
 
 // Export the connected component
-export default connect(mapStateToProps, mapDispatchToProps)(Messages);
+export default connect(mapStateToProps, mapDispatchToProps)(LocalQuotes);

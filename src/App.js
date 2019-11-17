@@ -1,13 +1,15 @@
 import React from 'react';
 import Messages from "./containers/Messages";
+import LocalQuotes from "./containers/LocalQuotes";
+
 import './App.css';
 
-function App({ setMessage, setNestMessage, message, secret }) {
+function App() {
   return (
     <div className="App">
       <header className="App-header">
-         <h2>Redux</h2>
          <Messages />
+         <LocalQuotes />
       </header>
     </div>
   );
