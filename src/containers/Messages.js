@@ -6,14 +6,12 @@ import '../App.css';
 // Component that is connected to Redux
 function Messages({ setMessage, message }){
   return (
-    <div className="App">
-      <header className="App-header">
-         <h3>Message: </h3>
-         <h2>{message}</h2>
-         <button onClick={() => setMessage("Hello!")}>Set Message</button>
-         <button onClick={() => { setMessage(""); }}>Clear Messages</button>
-      </header>
-    </div>
+    <header className="App-header">
+        <h2>Message: </h2>
+        <p>{message}</p>
+        <button onClick={() => setMessage("Hello!")}>Set Message</button>
+        <button onClick={() => { setMessage(""); }}>Clear Messages</button>
+    </header>
   );
 }
 

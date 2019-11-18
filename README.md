@@ -16,7 +16,4 @@ npm start
 
 TODO
 * separate ducks
-
-* add configure store with all redcures to index.js
-
-* Move logic from action cretor to map dispatch to props
+* random quote api http://quotes.stormconsultancy.co.uk/random.json

@@ -1,8 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
-import { logger } from 'redux-logger';
-// random quote local
-// then with api 
-// http://quotes.stormconsultancy.co.uk/random.json
+
 // Actions
 export const SET_MESSAGE = "SET_MESSAGE";
 export const GET_LOCAL_QUOTE = "GET_LOCAL_QUOTE";
@@ -61,11 +57,3 @@ export function messageReducer(state=DEFAULT_STATE, action){
   }
 }
 
-// Move this to index when we combine reducers
-
-// Apply middleware
-// This middleware lets us see how the store changes via console logs
-const middleware = applyMiddleware(logger);
-
-// Now we create the store, using our reducer
-export const messageStore =  createStore(messageReducer, middleware);

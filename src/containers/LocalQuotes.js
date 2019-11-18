@@ -5,29 +5,26 @@ import { getLocalQuote } from '../ducks/messageDuck';
 // Component that is connected to Redux
 function LocalQuotes({ getLocalQuote, localQuote }){
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Local Quote</h2>
-        <p>{localQuote}</p>
-        <button onClick={() => getLocalQuote()}>Get Local Quote</button>
-      </header>
-    </div>
+    <header className="App-header">
+      <h2>Local Quote</h2>
+      <p>{localQuote}</p>
+      <button onClick={() => getLocalQuote()}>Get Local Quote</button>
+    </header>
   );
 }
 
 // Function that calculates random quote
 function getRandomQuote(array){
   const randomQuote = Math.floor(Math.random() * array.length);
-  const quote = array[randomQuote];
-  return quote;
+  return array[randomQuote];
 }
 
 // Select the piece of state we want this component to manage
 // Then map it to the component's props eg this.props.message will equal the store's message value:
 function mapStateToProps(state) {
-  // Uswe custom function to add random quote to store
+  // Use custom function to add random quote to store
   return {
-    localQuote: getRandomQuote(state.localQuotes)
+    localQuote: getRandomQuote(state.localQuotes),
   }
 }
 // Map the action to our component
