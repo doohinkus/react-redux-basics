@@ -16,12 +16,9 @@ export function setMessage (message){
   }
 }
 export function getLocalQuote (){
-  // Grab a random local quote from default state
-  const randomQuote = Math.floor(Math.random()*DEFAULT_STATE.localQuotes.length);
-  const quote = DEFAULT_STATE.localQuotes[randomQuote];
+  // Actions don't require payloads, but they must have types
   return {
     type: GET_LOCAL_QUOTE,
-    payload: quote
   }
 }
 

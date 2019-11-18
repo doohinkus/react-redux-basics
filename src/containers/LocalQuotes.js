@@ -15,11 +15,19 @@ function LocalQuotes({ getLocalQuote, localQuote }){
   );
 }
 
-// Select ths piece of state we want this component to manage
+// Function that calculates random quote
+function getRandomQuote(array){
+  const randomQuote = Math.floor(Math.random() * array.length);
+  const quote = array[randomQuote];
+  return quote;
+}
+
+// Select the piece of state we want this component to manage
 // Then map it to the component's props eg this.props.message will equal the store's message value:
 function mapStateToProps(state) {
+  // Uswe custom function to add random quote to store
   return {
-    localQuote: state.localQuote
+    localQuote: getRandomQuote(state.localQuotes)
   }
 }
 // Map the action to our component

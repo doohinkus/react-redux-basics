@@ -16,12 +16,10 @@ export function setMessage (message){
   }
 }
 export function getLocalQuote (){
-  // Grab a random local quote from default state
-  const randomQuote = Math.floor(Math.random()*DEFAULT_STATE.localQuotes.length);
-  const quote = DEFAULT_STATE.localQuotes[randomQuote];
+ 
   return {
     type: GET_LOCAL_QUOTE,
-    payload: quote
+    // payload: quote
   }
 }
 
@@ -29,7 +27,7 @@ export function getLocalQuote (){
 export const  DEFAULT_STATE = {
   message: "",
   localQuotes: [
-    "It by will alone I set my mind in motion.",
+    "It is by will alone I set my mind in motion.",
     "A penny saved is a penny earned.",
     "Waste not, want not.",
     "To see a world in a grain of sand....",
