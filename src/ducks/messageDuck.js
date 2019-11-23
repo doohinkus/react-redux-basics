@@ -1,7 +1,6 @@
 
 // Actions
 export const SET_MESSAGE = "SET_MESSAGE";
-export const GET_LOCAL_QUOTE = "GET_LOCAL_QUOTE";
 
 
 // Action Creators
@@ -11,26 +10,10 @@ export function setMessage (message){
     payload: message
   }
 }
-export function getLocalQuote (){
-  // Actions don't require payloads, but they must have types
-  return {
-    type: GET_LOCAL_QUOTE,
-  }
-}
 
 // Default state
 export const  DEFAULT_STATE = {
-  message: "",
-  localQuotes: [
-    "It by will alone I set my mind in motion.",
-    "A penny saved is a penny earned.",
-    "Waste not, want not.",
-    "To see a world in a grain of sand....",
-    "Happy wife, happy life.",
-    "The world harmonioulsy confused, where order in variety we see. And where, though, all things differ: All agree."
-  ],
-  localQuote: "",
-  apiQuotes: []
+  message: "Default message"
 }
 
 // Reducer
@@ -45,12 +28,6 @@ export function messageReducer(state=DEFAULT_STATE, action){
       return {
         ...state,
         message: action.payload
-      }
-    case(GET_LOCAL_QUOTE):
-      return {
-        ...state,
-        localQuote: action.payload
-        
       }
     default:
       return state;
