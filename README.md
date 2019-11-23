@@ -17,3 +17,4 @@ npm start
 TODO
 * separate ducks
 * HOC
+* Add tests
