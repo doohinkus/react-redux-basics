@@ -1,21 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getLocalQuote  } from '../ducks/messageDuck';
 import { apiQuote } from '../async/actions';
 import Quote from '../components/Quote';
 // import { apiQuote } from '../async/actions'; 
 
 // Component that is connected to Redux
-function LocalQuotes({ getLocalQuote, localQuote }){
+function LocalQuotes({ apiQuote, getApiQuote }){
   return (
-    <Quote title="Local" quote={localQuote} action={getLocalQuote} />
+    <Quote title="Local" quote={apiQuote} action={getApiQuote} />
   );
-}
-
-// Function that calculates random quote
-function getRandomQuote(array){
-  const randomQuote = Math.floor(Math.random() * array.length);
-  return array[randomQuote];
 }
 
 // Select the piece of state we want this component to manage
@@ -23,7 +16,7 @@ function getRandomQuote(array){
 function mapStateToProps(state) {
   // Use custom function to add random quote to store
   return {
-    localQuote: getRandomQuote(state.localQuotes),
+    apiQuote: state.message,
   }
 }
 // Map the action to our component
@@ -31,8 +24,7 @@ function mapStateToProps(state) {
 // It is, however, bad practice to change the names of actions
 function mapDispatchToProps(dispatch){
   return {
-    getLocalQuote: () => dispatch(getLocalQuote()),
-    apiQuote: () => dispatch(apiQuote())
+    getApiQuote: () => dispatch(apiQuote())
   }
 }
 // This is how to connect redux to the component

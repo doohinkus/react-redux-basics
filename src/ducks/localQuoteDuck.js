@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
-import { logger } from 'redux-logger';
+import axios from 'axios';
 // random quote local
 // then with api 
 // http://quotes.stormconsultancy.co.uk/random.json
@@ -22,6 +21,8 @@ export function getLocalQuote (){
     // payload: quote
   }
 }
+
+
 
 // Default state
 export const  DEFAULT_STATE = {

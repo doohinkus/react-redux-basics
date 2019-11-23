@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,6 +9,7 @@ import {
 
 import Messages from "./containers/Messages";
 import LocalQuotes from "./containers/LocalQuotes";
+import ApiQuotes from "./containers/ApiQuotes";
 
 import './App.css';
 
@@ -20,8 +22,10 @@ function App() {
             <Link to="/">Home</Link>
             <Link to="/message">Message</Link>
             <Link to="/localQuotes">Local Quotes</Link>
+            <Link to="/apiQuotes">Api Quotes</Link>
           </nav>
           <div className="App">
+
             <Route path="/" exact>
               <header className="App-header">
                 <h1>Simple React Redux Example</h1>
@@ -35,6 +39,9 @@ function App() {
             <Route path="/localQuotes">
               <LocalQuotes />
             </Route>
+            <Route path="/apiQuotes">
+              <ApiQuotes />
+            </Route>
           </div>
         </Router>
       </section>
@@ -42,4 +49,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect()(App);

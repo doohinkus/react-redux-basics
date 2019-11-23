@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from "redux";
 import { logger } from 'redux-logger';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import { messageReducer } from './ducks/messageDuck';
-
+import { apiQuote } from './async/actions'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -12,7 +13,7 @@ import * as serviceWorker from './serviceWorker';
 
 // Apply middleware
 // This middleware lets us see how the store changes via console logs
-const middleware = applyMiddleware(logger);
+const middleware = applyMiddleware(thunk,logger);
 
 // Now we create the store, using our reducers
 const messageStore =  createStore(messageReducer, middleware);
