@@ -16,4 +16,4 @@ npm start
 
 TODO
 * separate ducks
-* random quote api http://quotes.stormconsultancy.co.uk/random.json
+* HOC
