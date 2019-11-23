@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { apiQuote } from '../async/actions';
+
 import Quote from '../components/Quote';
-// import { apiQuote } from '../async/actions'; 
 
 // Component that is connected to Redux
-function LocalQuotes({ apiQuote, getApiQuote }){
+function ApiQuotes({ apiQuote, getApiQuote }){
   return (
-    <Quote title="Local" quote={apiQuote} action={getApiQuote} />
+    <Quote title="Api" quote={apiQuote} action={getApiQuote} />
   );
 }
 
@@ -16,7 +16,7 @@ function LocalQuotes({ apiQuote, getApiQuote }){
 function mapStateToProps(state) {
   // Use custom function to add random quote to store
   return {
-    apiQuote: state.message,
+    apiQuote: state.apiQuoteReducer.quote,
   }
 }
 // Map the action to our component
@@ -33,4 +33,4 @@ function mapDispatchToProps(dispatch){
 // For example: connect(null, mapDispatchToProps)(App)
 
 // Export the connected component
-export default connect(mapStateToProps, mapDispatchToProps)(LocalQuotes);
+export default connect(mapStateToProps, mapDispatchToProps)(ApiQuotes);

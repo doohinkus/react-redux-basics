@@ -19,7 +19,7 @@ function Messages({ setMessage, message }){
 // Then map it to the component's props eg this.props.message will equal the store's message value:
 function mapStateToProps(state) {
   return {
-    message: state.message,
+    message: state.messageReducer.message,
   }
 }
 // Map the action to our component

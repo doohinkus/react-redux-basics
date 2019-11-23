@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import { logger } from 'redux-logger';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { messageReducer } from './ducks/messageDuck';
-import { apiQuote } from './async/actions'
+import { localQuoteReducer } from './ducks/localQuoteDuck';
+import { apiQuoteReducer } from './ducks/apiQuoteDuck';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -16,7 +17,12 @@ import * as serviceWorker from './serviceWorker';
 const middleware = applyMiddleware(thunk,logger);
 
 // Now we create the store, using our reducers
-const messageStore =  createStore(messageReducer, middleware);
+const rootReducer = combineReducers({
+  messageReducer,
+  localQuoteReducer,
+  apiQuoteReducer
+}) 
+const messageStore =  createStore(rootReducer, middleware);
 
 
 ReactDOM.render(<Provider store={messageStore}><App /></Provider>, document.getElementById('root'));

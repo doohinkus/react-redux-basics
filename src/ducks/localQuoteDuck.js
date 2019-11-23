@@ -1,24 +1,19 @@
-import axios from 'axios';
-// random quote local
-// then with api 
-// http://quotes.stormconsultancy.co.uk/random.json
 // Actions
-export const SET_MESSAGE = "SET_MESSAGE";
+export const SET_QUOTE = "SET_QUOTE";
 export const GET_LOCAL_QUOTE = "GET_LOCAL_QUOTE";
 
 
 // Action Creators
-export function setMessage (message){
+export function setQuote (quote){
   return {
-    type: SET_MESSAGE,
-    payload: message
+    type: SET_QUOTE,
+    payload: quote
   }
 }
+// This action helps trace what's going on
 export function getLocalQuote (){
- 
   return {
-    type: GET_LOCAL_QUOTE,
-    // payload: quote
+    type: GET_LOCAL_QUOTE
   }
 }
 
@@ -26,7 +21,7 @@ export function getLocalQuote (){
 
 // Default state
 export const  DEFAULT_STATE = {
-  message: "",
+  quote: "",
   localQuotes: [
     "It is by will alone I set my mind in motion.",
     "A penny saved is a penny earned.",
@@ -34,35 +29,30 @@ export const  DEFAULT_STATE = {
     "To see a world in a grain of sand....",
     "Happy wife, happy life.",
     "The world harmonioulsy confused, where order in variety we see. And where, though, all things differ: All agree."
-  ],
-  localQuote: "",
-  apiQuotes: []
+  ]
 }
 
 // Reducer
-export function messageReducer(state=DEFAULT_STATE, action){
+export function localQuoteReducer(state=DEFAULT_STATE, action){
   // ...state returns a copy of the old state
   // we are not mutating state
   // we simply add a new copy with updated information
   // this allows us to track changes easilywith redux logger
 
   switch (action.type){
-    case(SET_MESSAGE):
+    case(SET_QUOTE):
       return {
         ...state,
-        message: action.payload
+        quote: action.payload
       }
     case(GET_LOCAL_QUOTE):
       return {
-        ...state,
-        localQuote: action.payload
-        
+        ...state
       }
     default:
-      return state;
+      return state
   }
 }
 
-// Move this to index when we combine reducers
 
 
