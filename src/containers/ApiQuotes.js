@@ -14,9 +14,10 @@ function ApiQuotes({ apiQuote, getApiQuote }){
 // Select the piece of state we want this component to manage
 // Then map it to the component's props eg this.props.message will equal the store's message value:
 function mapStateToProps(state) {
+  const { quote } =  state.apiQuoteReducer;
   // Use custom function to add random quote to store
   return {
-    apiQuote: state.apiQuoteReducer.quote,
+    apiQuote: quote
   }
 }
 // Map the action to our component
