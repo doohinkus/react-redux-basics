@@ -18,8 +18,9 @@ function Messages({ setMessage, message }){
 // Select ths piece of state we want this component to manage
 // Then map it to the component's props eg this.props.message will equal the store's message value:
 function mapStateToProps(state) {
+  const { message } = state.messageReducer;
   return {
-    message: state.messageReducer.message,
+    message,
   }
 }
 // Map the action to our component
