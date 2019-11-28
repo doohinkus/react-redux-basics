@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getLocalQuote  } from '../ducks/localQuoteDuck';
+import { getLocalQuote, localQuotesArray, getRandomElementFromArray  } from '../ducks/localQuoteDuck';
 import Quote from '../components/Quote';
 // import { apiQuote } from '../async/actions'; 
 
@@ -11,19 +11,18 @@ function LocalQuotes({ getLocalQuote, localQuote }){
   );
 }
 
-// Function that calculates random quote
-function getRandomQuote(array){
-  const randomQuote = Math.floor(Math.random() * array.length);
-  return array[randomQuote];
-}
+
 
 // Select the piece of state we want this component to manage
 // Then map it to the component's props eg this.props.message will equal the store's message value:
 function mapStateToProps(state) {
-  const { localQuotes }  = state.localQuoteReducer;
+  // We can also imitate selectors here
+  // const { localQuotes }  = state.localQuoteReducer;
+  // Use selector to grab the localQuotes array
+  const quotes = localQuotesArray(state);
   // Use custom function to add random quote to store
   return {
-    localQuote: getRandomQuote(localQuotes),
+    localQuote: getRandomElementFromArray(quotes),
   }
 }
 // Map the action to our component

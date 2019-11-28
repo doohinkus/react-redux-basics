@@ -32,6 +32,19 @@ export const  DEFAULT_STATE = {
   ]
 }
 
+// Function that get random element from array
+export function getRandomElementFromArray(array){
+  const randomElement = Math.floor(Math.random() * array.length);
+  return array[randomElement];
+}
+
+// Selector 
+export const localQuotesArray = state => {
+  const { localQuotes } = state.localQuoteReducer;
+  // return localQuotes array
+  return localQuotes;
+}
+
 // Reducer
 export function localQuoteReducer(state=DEFAULT_STATE, action){
   // ...state returns a copy of the old state
