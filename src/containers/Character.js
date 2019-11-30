@@ -3,22 +3,22 @@ import { connect } from 'react-redux';
 import { moveSprite } from '../ducks/characterDuck';
 
 
-function Character({ x_position, y_position, moveSprite, setDirection }){
-  // 50px
-  const map = [
-    [0,0,1,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,1,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,1,0,0,0,1,0],
-    [0,0,0,0,0,0,0,0,0,0],
-  ];
+
+function Character({ 
+  x_position,
+  y_position,
+  s_width,
+  s_height,
+  map,
+  width,
+  height,
+  moveSprite, 
+  setDirection }){
+
   
   function moveCharacter(keyCode){
     let direction = null;
-    const sprite = 10;
-    const height = 300;
-    const width = 500;
+    console.log(height)
     switch (keyCode){
       case 38: 
         direction = "UP"
@@ -36,22 +36,22 @@ function Character({ x_position, y_position, moveSprite, setDirection }){
     switch(direction){
       case ("UP"):
         if (y_position !== 0){
-          moveSprite({ x_position, y_position: y_position - sprite })
+          moveSprite({ x_position, y_position: y_position - s_height })
         }
         break;
       case ("DOWN"):
-        if (y_position !== height - sprite){
-          moveSprite({ x_position, y_position: y_position + sprite })
+        if (y_position !== height - s_height){
+          moveSprite({ x_position, y_position: y_position + s_height })
         }
         break;
       case ("LEFT"):
         if (x_position !== 0){
-          moveSprite({ x_position: x_position - sprite, y_position })
+          moveSprite({ x_position: x_position - s_width, y_position })
         }
         break;
       case ("RIGHT"):
-        if (x_position !== width - sprite){
-          moveSprite({ x_position: x_position + sprite, y_position })
+        if (x_position !== width - s_width){
+          moveSprite({ x_position: x_position + s_width, y_position })
         }
         break;
       default: 
@@ -60,21 +60,7 @@ function Character({ x_position, y_position, moveSprite, setDirection }){
   
    
   }
- 
-  // function setDirection(keyCode){
-  //   switch (keyCode){
-  //     case 38: 
-  //       return "UP"
-  //     case 40:
-  //       return "DOWN"
-  //     case 37:
-  //       return "LEFT"
-  //     case 39:
-  //      return "RIGHT"
-  //     default:
-  //       return null
-  //   }
-  // }
+
   return (
     <div>
       <h2>Character</h2>
@@ -129,10 +115,16 @@ function Character({ x_position, y_position, moveSprite, setDirection }){
 }
 
 function mapStateToProps(state){
-  const { x_position, y_position } = state.characterReducer.sprite;
+  const { x_position, y_position, s_width, s_height } = state.characterReducer.sprite;
+  const { map, width, height } = state.characterReducer.gameBoard;
   return {
     x_position,
-    y_position
+    y_position,
+    s_width,
+    s_height,
+    map,
+    width,
+    height
   }
 }
 function mapDispatchToProps(dispatch){
