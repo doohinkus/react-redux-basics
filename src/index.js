@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import { messageReducer } from './ducks/messageDuck';
 import { localQuoteReducer } from './ducks/localQuoteDuck';
 import { apiQuoteReducer } from './ducks/apiQuoteDuck';
+import { characterReducer } from './ducks/characterDuck';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -20,7 +21,8 @@ const middleware = applyMiddleware(thunk,logger);
 const rootReducer = combineReducers({
   messageReducer,
   localQuoteReducer,
-  apiQuoteReducer
+  apiQuoteReducer,
+  characterReducer
 }) 
 const messageStore =  createStore(rootReducer, middleware);
 
