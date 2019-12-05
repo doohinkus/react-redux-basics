@@ -18,3 +18,4 @@ TODO
 * separate ducks
 * HOC
 * Add tests
+* Add Git
