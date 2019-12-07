@@ -17,12 +17,14 @@ function Form({ name }){
     </React.Fragment>
   );
 }
+// select form
 const selector = formValueSelector('contactForm');
 
 function mapStateToProps(state){
+  // map to props
   return {
     name: selector(state, "name")
   }
 }
-
+// connect state to component
 export default connect(mapStateToProps)(Form);
