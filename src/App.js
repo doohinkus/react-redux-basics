@@ -9,6 +9,7 @@ import Messages from "./containers/Messages";
 import LocalQuotes from "./containers/LocalQuotes";
 import ApiQuotes from "./containers/ApiQuotes";
 import Character from './containers/Character';
+import Form from './containers/Form';
 
 import './App.css';
 
@@ -22,6 +23,7 @@ function App() {
             <Link to="/character">Character</Link>
             <Link to="/localQuotes">Local Quotes</Link>
             <Link to="/apiQuotes">Api Quotes</Link>
+            <Link to="/form">Form</Link>
           </nav>
           <div className="App">
 
@@ -40,6 +42,9 @@ function App() {
             </Route>
             <Route path="/apiQuotes">
               <ApiQuotes />
+            </Route>
+            <Route path="/form">
+              <Form />
             </Route>
           </div>
         </Router>

@@ -4,6 +4,8 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { logger } from 'redux-logger';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { reducer as formReducer } from 'redux-form';
+
 import { messageReducer } from './ducks/messageDuck';
 import { localQuoteReducer } from './ducks/localQuoteDuck';
 import { apiQuoteReducer } from './ducks/apiQuoteDuck';
@@ -22,7 +24,8 @@ const rootReducer = combineReducers({
   messageReducer,
   localQuoteReducer,
   apiQuoteReducer,
-  characterReducer
+  characterReducer,
+  form: formReducer
 }) 
 const messageStore =  createStore(rootReducer, middleware);
 
