@@ -21,7 +21,7 @@ function Form({ name }){
 const selector = formValueSelector('contactForm');
 
 function mapStateToProps(state){
-  // map to props
+// map to props
   return {
     name: selector(state, "name")
   }
