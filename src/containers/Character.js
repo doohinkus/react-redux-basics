@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { moveSprite } from '../ducks/characterDuck';
+import Obstacles from '../components/Obstacles';
 
 
 
@@ -90,25 +91,10 @@ function Character({
             height: "10px"
           }
         }/>
-        {map.map((x, xIndex) => {
-          return x.map((y, yIndex) => {
-            return (
-              map[xIndex][yIndex] === 1 ? (<div 
-                style={
-                  {
-                    width: "50px",
-                    height: "50px",
-                    backgroundColor: "rgba(234,23,1,.3)",
-                    position: "absolute",
-                    top: xIndex * 50,
-                    left: yIndex * 50
-                  }
-                }
-              />) : null
-           
-            )
-          })
-        })}
+       <Obstacles 
+        array={map} 
+        obstacleId={1} 
+      />
       </div>
     </div>
   )
