@@ -12,7 +12,7 @@ function Form({ values }){
   }
   return (
     <React.Fragment>
-      <FieldErrors />
+      {/* <FieldErrors /> */}
       <ContactForm
         handleSubmit={handleSubmit}
       />

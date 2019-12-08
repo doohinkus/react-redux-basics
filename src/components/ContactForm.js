@@ -17,14 +17,18 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
       </div>
     );
   }
-  function renderPageErrors({ meta: { touched, error, warning }}){
-    return (
-      <div>
-        {touched && (error && <h2>Errors</h2>)}
-      </div>
-    );
-  }
-  // use form selector for top level validations
+ // page level errors
+ function renderError({ input, meta: { touched, error }, ...props }){
+  return (
+    <React.Fragment>
+      {
+        touched && error && (
+          <span {...props} className='error'>{error}</span>
+        )
+      }
+    </React.Fragment>
+  );
+ }
   
  
   function ContactForm({ handleSubmit, pristine, reset, submitting }){
@@ -34,6 +38,16 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
   }
   return (
     <form onSubmit={handleSubmit}>
+      <div>
+        <Field 
+          name='name'
+          component={renderError}
+        />
+        <Field 
+          name='valid'
+          component={renderError}
+        />
+      </div>
       <div>
         <label>Name</label>
         <Field
@@ -50,7 +64,7 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
           type="text"
           label="validate"
           placeholder="Enter text"
-          validate={[number]}
+          validate={number}
         />
         <button type="submit" disabled={submitting}>Submit</button>
       </div>
