@@ -17,8 +17,8 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
       </div>
     );
   }
+  
  // page level errors
- 
  function renderError({ input, meta: { touched, error }, ...props }){
   return (
     <React.Fragment>
