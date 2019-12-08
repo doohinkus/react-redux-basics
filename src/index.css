@@ -29,3 +29,6 @@ p {
   margin: auto;
   width: 70%;
 }
+span, label{
+  display: block;
+}

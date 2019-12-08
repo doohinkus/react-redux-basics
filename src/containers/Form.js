@@ -2,18 +2,21 @@ import React from 'react';
 import { connect }  from 'react-redux';
 import { formValueSelector } from 'redux-form';
 import ContactForm from '../components/ContactForm';
+import FieldErrors from '../components/FieldErrors';
 
-function Form({ name }){
+
+function Form({ values }){
   function handleSubmit(e){
     e.preventDefault();
-    console.log("NAME>>>", name)
+    console.log( values )
   }
   return (
     <React.Fragment>
+      <FieldErrors />
       <ContactForm
         handleSubmit={handleSubmit}
       />
-     {name}
+     {values.name}
     </React.Fragment>
   );
 }
@@ -23,7 +26,7 @@ const selector = formValueSelector('contactForm');
 function mapStateToProps(state){
 // map to props
   return {
-    name: selector(state, "name")
+    values: selector(state, "name", "valid"),
   }
 }
 // connect state to component
