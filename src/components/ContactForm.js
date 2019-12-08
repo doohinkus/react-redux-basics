@@ -21,11 +21,7 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
  function renderError({ input, meta: { touched, error }, ...props }){
   return (
     <React.Fragment>
-      {
-        touched && error && (
-          <span {...props} className='error'>{error}</span>
-        )
-      }
+      { touched && error && (<span {...props} className='error'>{error}</span>) }
     </React.Fragment>
   );
  }
