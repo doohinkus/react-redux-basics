@@ -1,5 +1,5 @@
 //  Actions
-const MOVE_SPRITE = "MOVE_SPRITE";
+export const MOVE_SPRITE = "MOVE_SPRITE";
 
 // Action creators
 
