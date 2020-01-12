@@ -5,6 +5,8 @@ import { Field, reduxForm } from 'redux-form';
 const number = value => value && isNaN(Number(value)) ? 'Must be a number' : undefined;
 const required = value => value  ? undefined : 'Required';
 
+
+
 // field level validation component
 function renderField({ input, label, type, meta: { touched, error, warning } }){
   return (
@@ -26,24 +28,36 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
     </React.Fragment>
   );
  }
-  
+
+const validate = values => {
+  const errors = {};
+  if (!values.name) errors.name = "Required";
+  if (isNaN(Number(values.valid))) errors.valid = "Enter a number";
+  return errors;
+
+}
  
-  function ContactForm({ handleSubmit, pristine, reset, submitting }){
+  function ContactForm({ handleSubmit, pristine, reset, submitting, isInvalid, isPristine, errors }){
+    console.log(`
+      isPristine: ${isPristine}
+      isInvalid: ${isInvalid}
+    `)
   function phone (value){
     // only numbers
     return value.replace(/[^\d]/g, '');
   }
+   
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field 
+        {/* <Field 
           name='name'
           component={renderError}
         />
         <Field 
           name='valid'
           component={renderError}
-        />
+        /> */}
       </div>
       <div>
         <label>Name</label>
@@ -53,7 +67,7 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
           type="text"
           placeholder="Enter name"
           // normalize={phone}
-          validate={required}
+          // validate={required}
         />
         <Field
           component={renderField}
@@ -61,7 +75,7 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
           type="text"
           label="validate"
           placeholder="Enter text"
-          validate={number}
+          // validate={number}
         />
         <button type="submit" disabled={submitting}>Submit</button>
       </div>
@@ -70,5 +84,6 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
 }
 
 export default reduxForm({
-    form: 'contactForm'
+    form: 'contactForm',
+    validate
   })(ContactForm);

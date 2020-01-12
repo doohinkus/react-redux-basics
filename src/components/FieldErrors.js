@@ -9,18 +9,18 @@ function FieldErrors({errors, isInvalid, isValid, isDirty, isPristine }){
     isInvalid: ${isInvalid}
     isValid: ${isValid}
     isDirty: ${isDirty}
+    keyLength: ${Object.keys(errors).length}
   `)
   return (
-    <div>
-      {Object.keys(errors) && (
-        <React.Fragment>
+    <React.Fragment>
+      {Object.keys(errors) > 0 && isDirty && (  
+        <div>
           <h2>Errors</h2>
           {Object.keys(errors).map(error => <p key={error}>{errors[error]}</p>)}
-        </React.Fragment>
+        </div>     
       )}
-    </div>
+    </React.Fragment>
   )
-
 }
 
 
