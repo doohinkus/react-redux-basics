@@ -1,5 +1,7 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, isInvalid } from 'redux-form';
+import { connect } from 'react-redux';
+import FieldLevelErrors from '../components/FieldErrors';
 
 // validations 
 const number = value => value && isNaN(Number(value)) ? 'Must be a number' : undefined;
@@ -24,9 +26,17 @@ function renderField({ input, label, type, meta: { touched, error, warning } }){
  function renderError({ input, meta: { touched, error }, ...props }){
   return (
     <React.Fragment>
+   
       { touched && error && (<span {...props} className='error'>{error}</span>) }
     </React.Fragment>
   );
+ }
+ function renderTitleError({meta: { touched, error }}){
+   return (
+    <React.Fragment>
+      {touched && error && <h2>Please address errors:</h2>}
+    </React.Fragment>
+   );
  }
 
 const validate = values => {
@@ -36,7 +46,9 @@ const validate = values => {
   return errors;
 
 }
- 
+
+
+
   function ContactForm({ handleSubmit, pristine, reset, submitting, isInvalid, isPristine, errors }){
     console.log(`
       isPristine: ${isPristine}
@@ -49,16 +61,20 @@ const validate = values => {
    
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        {/* <Field 
+       <FieldLevelErrors>
+        {/* <Field
+          name={["name", "valid"]}
+          component={renderTitleError}
+        /> */}
+        <Field 
           name='name'
           component={renderError}
         />
         <Field 
           name='valid'
           component={renderError}
-        /> */}
-      </div>
+        />
+      </FieldLevelErrors>
       <div>
         <label>Name</label>
         <Field

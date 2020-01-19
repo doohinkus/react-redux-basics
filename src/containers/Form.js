@@ -2,7 +2,6 @@ import React from 'react';
 import { connect }  from 'react-redux';
 import { formValueSelector, isInvalid, isPristine, getFormSyncErrors } from 'redux-form';
 import ContactForm from '../components/ContactForm';
-import FieldErrors from '../components/FieldErrors';
 
 
 function Form({ values, isInvalid, isPristine, errors }){
@@ -12,8 +11,6 @@ function Form({ values, isInvalid, isPristine, errors }){
   }
   return (
     <React.Fragment>
-      { Object.keys(errors).length ? (<h2>Errors</h2>) : null}
-      { Object.keys(errors).length ? Object.keys(errors).map(key => <p key={key}>{key} : {errors[key]}</p>) : null}
       <ContactForm
         handleSubmit={handleSubmit}
         isInvalid={isInvalid}
